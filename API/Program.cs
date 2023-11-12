@@ -6,12 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Register Data Base
+// Register Data Base for SQLite
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Register Data Base for SQLServer
 // builder.Services.AddDbContext<AppDbContext>(p => p.UseSqlServer(
 //     builder.Configuration.GetConnectionString("DefaultConnection")
 //     ));
