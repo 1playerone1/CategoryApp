@@ -6,16 +6,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Register Data Base for SQLite
-builder.Services.AddDbContext<AppDbContext>(opt =>
+// TODO - In production remove ConnectionString from appsettings.Development.json
+if (builder.Environment.IsDevelopment())
 {
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+    // Register Data Base for SQLite
+    builder.Services.AddDbContext<AppDbContext>(opt =>
+    { 
+        opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+}
 
 // Register Data Base for SQLServer
-// builder.Services.AddDbContext<AppDbContext>(p => p.UseSqlServer(
-//     builder.Configuration.GetConnectionString("DefaultConnection")
-//     ));
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 var app = builder.Build();
 
