@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 // Register Data Base for SQLServer
 builder.Services.AddDbContext<AppDbContext>(opt =>
 { 
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
