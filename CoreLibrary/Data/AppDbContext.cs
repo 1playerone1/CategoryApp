@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-using API.Models;
 using Microsoft.EntityFrameworkCore;
+using ModelsLibrary.Models;
 
-namespace API.Data;
+namespace CoreLibrary.Data;
 
 public class AppDbContext : DbContext
 {

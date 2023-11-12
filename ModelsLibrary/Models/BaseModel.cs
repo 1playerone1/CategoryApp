@@ -1,4 +1,4 @@
-﻿namespace API.Models;
+﻿namespace ModelsLibrary.Models;
 
 public class BaseModel
 {

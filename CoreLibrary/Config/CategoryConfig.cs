@@ -1,8 +1,8 @@
-﻿using API.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ModelsLibrary.Models;
 
-namespace API.Config;
+namespace CoreLibrary.Config;
 
 public class CategoryConfig : IEntityTypeConfiguration<Category>
 {
@@ -10,5 +10,6 @@ public class CategoryConfig : IEntityTypeConfiguration<Category>
     {
         builder.Property(c => c.CategoryId).IsRequired();
         builder.Property(c => c.Name).IsRequired().HasMaxLength(128);
+        builder.Property(c => c.DisplayOrder).IsRequired();
     }
 }
