@@ -16,5 +16,12 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        modelBuilder.Entity<Category>().HasData
+        (
+            new Category { CategoryId = 1, Name = "Aksiyon", DisplayOrder = 1 },
+            new Category { CategoryId = 2, Name = "Bilim Kurgu", DisplayOrder = 2 },
+            new Category { CategoryId = 3, Name = "Tarih", DisplayOrder = 3 }
+        );
     }
 }

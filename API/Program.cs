@@ -5,21 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-// TODO - In production remove ConnectionString from appsettings.Development.json
-if (builder.Environment.IsDevelopment())
-{
-    // Register Data Base for SQLite
-    builder.Services.AddDbContext<AppDbContext>(opt =>
-    { 
-        opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-    });
-}
-
 // Register Data Base for SQLServer
 builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+{ 
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 
@@ -41,5 +31,18 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var context = services.GetRequiredService<AppDbContext>();
+var logger = services.GetRequiredService<ILogger<Program>>();
+try
+{
+    await context.Database.MigrateAsync();
+}
+catch (Exception e)
+{
+    logger.LogError(e, "Error during migration");
+}
 
 app.Run();

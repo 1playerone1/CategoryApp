@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreLibrary.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231112121936_Initial")]
+    [Migration("20231112210458_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -43,6 +43,26 @@ namespace CoreLibrary.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            DisplayOrder = 1,
+                            Name = "Aksiyon"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            DisplayOrder = 2,
+                            Name = "Bilim Kurgu"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            DisplayOrder = 3,
+                            Name = "Tarih"
+                        });
                 });
 #pragma warning restore 612, 618
         }
