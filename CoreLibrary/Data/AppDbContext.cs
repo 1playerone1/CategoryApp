@@ -19,9 +19,9 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<Category>().HasData
         (
-            new Category { CategoryId = 1, Name = "Aksiyon", DisplayOrder = 1 },
-            new Category { CategoryId = 2, Name = "Bilim Kurgu", DisplayOrder = 2 },
-            new Category { CategoryId = 3, Name = "Tarih", DisplayOrder = 3 }
+            new Category { Id = 1, Name = "Aksiyon", DisplayOrder = 1 },
+            new Category { Id = 2, Name = "Bilim Kurgu", DisplayOrder = 2 },
+            new Category { Id = 3, Name = "Tarih", DisplayOrder = 3 }
         );
     }
 }

@@ -18,4 +18,17 @@ public class CategoryController : Controller
         List<Category> CategoryList = _context.Categories.ToList();
         return View(CategoryList);
     }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Create(Category category)
+    {
+        _context.Categories.Add(category);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
 }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreLibrary.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231112210458_Initial")]
+    [Migration("20231113210132_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -26,11 +26,11 @@ namespace CoreLibrary.Data.Migrations
 
             modelBuilder.Entity("ModelsLibrary.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("int");
@@ -40,26 +40,26 @@ namespace CoreLibrary.Data.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
+                            Id = 1,
                             DisplayOrder = 1,
                             Name = "Aksiyon"
                         },
                         new
                         {
-                            CategoryId = 2,
+                            Id = 2,
                             DisplayOrder = 2,
                             Name = "Bilim Kurgu"
                         },
                         new
                         {
-                            CategoryId = 3,
+                            Id = 3,
                             DisplayOrder = 3,
                             Name = "Tarih"
                         });

@@ -2,5 +2,5 @@
 
 public class BaseModel
 {
-    public int CategoryId { get; set; }
+    public int Id { get; set; }
 }
