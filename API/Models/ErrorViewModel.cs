@@ -1,4 +1,4 @@
-namespace ModelsLibrary.Models
+namespace API.Models
 {
     public class ErrorViewModel
     {

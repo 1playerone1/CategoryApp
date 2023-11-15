@@ -1,4 +1,4 @@
-﻿@model List<Category>
+﻿@model List<API.Models.Category>
 
 <div class="container">
     <div class="row pt-4 pb-4">
@@ -22,14 +22,25 @@
             <th>
                 Display Order
             </th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        @foreach (var obj in Model.OrderBy(d => d.DisplayOrder))
+        @foreach (var category in Model.OrderBy(d => d.DisplayOrder))
         {
             <tr>
-                <td>@obj.Name</td>
-                <td>@obj.DisplayOrder</td>
+                <td>@category.Name</td>
+                <td>@category.DisplayOrder</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-primary mx-4">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger mx-4">
+                            <i class="bi bi-trash3-fill"></i> Delete
+                        </a>
+                    </div>
+                </td>
             </tr>
         }
         </tbody>

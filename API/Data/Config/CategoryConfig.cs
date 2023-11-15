@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using API.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ModelsLibrary.Models;
 
-namespace CoreLibrary.Config;
+namespace API.Data.Config;
 
 public class CategoryConfig : IEntityTypeConfiguration<Category>
 {

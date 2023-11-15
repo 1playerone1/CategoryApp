@@ -1,4 +1,4 @@
-using CoreLibrary.Data;
+using API.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +33,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Asynchronously applies any pending migrations for the context to the database.
+// Will create the database if it does not already exist.
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 var context = services.GetRequiredService<AppDbContext>();
